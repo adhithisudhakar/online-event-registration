@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conference Hall Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.jpg">
+        <span>Alagappa University</span>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About the Conference</a>
+        <a href="speakers.html">Incharges</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero register-hero">
+<div class="overlay">
+<div class="content">
+
+<h1 class="title">Conference Hall Booking</h1>
+
+<a href="calendar.php" class="btn">View Available Dates</a>
+
+<form class="register-form" action="process.php" method="POST">
+
+<input type="text" name="event_name" placeholder="Event Name" required>
+
+<select name="department" required>
+<option value="">Select Department</option>
+<option>CSE</option>
+<option>IT</option>
+<option>ECE</option>
+<option>EEE</option>
+<option>Mechanical</option>
+</select>
+
+<input type="date" id="date" name="booking_date" required>
+
+<button type="submit" class="btn">Book Now</button>
+
+</form>
+
+</div>
+</div>
+</section>
+
+<script>
+// auto fill date
+const params = new URLSearchParams(window.location.search);
+const date = params.get("date");
+
+if (date) {
+    document.getElementById("date").value = date;
+}
+
+// block past date
+const today = new Date().toISOString().split('T')[0];
+document.getElementById("date").setAttribute("min", today);
+</script>
+
+</body>
+</html>
+
